@@ -9,28 +9,16 @@
             .controller('DetailController', DetailController)
             );
 
-    function TopBarController($rootScope, $scope, $mdSidenav, $q, $mdBottomSheet) {
+    function TopBarController($rootScope, $scope, $q) {
 
         var vm = this;
 
-        vm.toggleMenu = function () {
-            var pending = $mdBottomSheet.hide() || $q.when(true);
-
-            pending.then(function () {
-                $mdSidenav('left').toggle();
-            });
-        };
     }
 
     function DetailController($rootScope, $routeParams, $scope, $location, yifyService) {
         var vm = this;
 
         vm.movie = {};
-
-        vm.tabs = [
-            {title: "Sinopse", content: "Conteúdo"},
-            {title: "Imagens", content: "Imagens"}
-        ];
 
         vm.query = {
             movie_id: $routeParams.id,
