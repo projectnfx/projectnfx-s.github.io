@@ -18,7 +18,7 @@
                     suffix: '.json'
                 });
                 $translateProvider.preferredLanguage('pt-br');
-                $translateProvider.useLocalStorage();
+//                $translateProvider.useLocalStorage();
             })
             );
 })(define, angular);
