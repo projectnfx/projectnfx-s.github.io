@@ -1,8 +1,8 @@
-<ul class="pagination" ng-cloak>
+<ul class="pagination">
     <li ng-class="{disabled: paginate.page_number === 1}">
         <a ng-click="prevPage()" href="javascript:void(0)">«</a>
     </li>
-    <li ng-class="{active: paginate.page_number === $index + paginationCtrl.pageFactor()}" ng-repeat="i in paginationCtrl.getTimes() track by $index">
+    <li ng-show="paginationCtrl.pageFactor() > 0" ng-class="{active: paginate.page_number === $index + paginationCtrl.pageFactor()}" ng-repeat="i in paginationCtrl.getTimes() track by $index">
         <a href="javascript:void(0)" ng-click="setPage($index + paginationCtrl.pageFactor())">{{$index + paginationCtrl.pageFactor()}}</a>
     </li>
     <li ng-class="{disabled: (paginate.page_number === paginationCtrl.getTotalPages())}">
