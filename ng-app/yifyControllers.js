@@ -21,11 +21,17 @@
         vm.movie = {};
 
         vm.getYtUrl = function (yt_code) {
-            return "//www.youtube.com/embed/" + yt_code + "?rel=0&amp;wmode=transparent&amp;border=0&amp;autoplay=1&amp;iv_load_policy=3"
+            return "http://www.youtube.com/embed/" + yt_code
         };
 
-        // Enable details jquery scripts
-        $('.cbox').colorbox();
+// Enable details jquery scripts
+        $('.cbox').colorbox({rel: 'gal'});
+
+        $('.youtube .cbox').colorbox({
+            iframe: true,
+            width: "600px",
+            height: "400px",
+        });
 
         vm.query = {
             movie_id: $routeParams.id,
