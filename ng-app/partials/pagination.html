@@ -1,9 +1,11 @@
-<ul class="pagination">
-    <li class="disabled"><a href="#">«</a></li>
-    <li class="active"><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">»</a></li>
+<ul class="pagination" ng-cloak>
+    <li ng-class="{disabled: paginate.page_number === 1}">
+        <a ng-click="prevPage()" href="javascript:void(0)">«</a>
+    </li>
+    <li ng-class="{active: paginate.page_number === $index + paginationCtrl.pageFactor()}" ng-repeat="i in paginationCtrl.getTimes() track by $index">
+        <a href="javascript:void(0)" ng-click="setPage($index + paginationCtrl.pageFactor())">{{$index + paginationCtrl.pageFactor()}}</a>
+    </li>
+    <li ng-class="{disabled: (paginate.page_number === paginationCtrl.getTotalPages())}">
+        <a ng-click="nextPage()" href="javascript:void(0)">»</a>
+    </li>
 </ul>

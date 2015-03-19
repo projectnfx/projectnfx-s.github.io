@@ -11,7 +11,7 @@
                     <figure>
                         <img class="img-responsive img-centered" ng-src="{{upcoming.medium_cover_image}}" alt="{{upcoming.title}} ({{upcoming.year}})">
                         <figcaption>
-                            <button type="button" class="btn btn-warning">{{ 'go_to_imdb' |translate}}</button>
+                            <button type="button" class="btn btn-warning" ng-click="homeCtrl.toImdb(upcoming.imdb_code)">{{ 'go_to_imdb' |translate}}</button>
                         </figcaption>
                     </figure>
                     <div class="browse-movie-bottom">

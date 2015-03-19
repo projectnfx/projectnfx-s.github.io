@@ -28,7 +28,26 @@
 
         yifyService.Detail.get(vm.query).$promise.then(function (response) {
             vm.movie = response.data;
+            console.log(vm.movie);
+            $scope.$emit('set-crumb', [{path: '/home', title: 'home'}, {path: '/list', title: 'search_results'}, {path: '/details/' + vm.query.movie_id, title: vm.movie.title}]);
         });
+
+        vm.getMagnetLink = function (hash, movieName) {
+            var encodedMovieName = encodeURI(movieName);
+            return 'magnet:?xt=urn:btih:' + hash + '&dn=' + encodedMovieName + '&tr=http://track.one:1234/announce&tr=udp://track.two:80';
+        };
+
+        vm.goMagnet = function (hash, movieName) {
+            window.location = vm.getMagnetLink(hash, movieName);
+        };
+
+        vm.goTorrent = function (url) {
+            window.location = url
+        };
+
+        vm.searchByName = function (name) {
+            $location.path('/list').search({query_term: name});
+        };
 
     }
 
@@ -39,7 +58,7 @@
 
         vm.search = $location.search() ? $location.search() : {};
 
-        $scope.$emit('add-crumb', {path: '/list', title: 'search_results'});
+        $scope.$emit('set-crumb', [{path: '/home', title: 'home'}, {path: '/list', title: 'search_results'}]);
 
         vm.doList = function () {
             yifyService.List.get(vm.search)
@@ -48,8 +67,13 @@
                     });
         };
 
-        vm.detail = function (movieId) {
-            $location.path("/details/" + movieId);
+        $rootScope.$on('update-page', function (event, newPage) {
+            vm.search['page'] = newPage;
+            vm.doRefresh();
+        });
+
+        vm.goToMovie = function (movie) {
+            $location.path("/details/" + movie.id);
         };
 
         vm.getMagnetLink = function (hash, movieName) {
@@ -59,8 +83,13 @@
 
         $scope.$on('update-search-filters', function (event, query) {
             vm.search = query;
-            vm.doList();
+            vm.search['page'] = 1;
+            vm.doRefresh();
         });
+
+        vm.doRefresh = function () {
+            $location.path('/list').search(vm.search);
+        };
 
         vm.goMagnet = function (hash, movieName) {
             window.location = vm.getMagnetLink(hash, movieName);
@@ -73,6 +102,8 @@
         var vm = this;
 
         vm.upcomings = [];
+
+        $scope.$emit('set-crumb', [{path: '/home', title: 'home'}]);
 
         vm.getUpcoming = function () {
             yifyService.Upcoming.get()

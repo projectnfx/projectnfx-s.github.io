@@ -9,6 +9,49 @@ html, body {
     padding-top: 50px;
 }
 
+.movie-details {
+    background: rgba(0,0,0,0.54);
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.54) 0%, rgba(43,62,80,1) 80%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.54)), color-stop(80%, rgba(43,62,80,1)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.54) 0%, rgba(43,62,80,1) 80%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0.54) 0%, rgba(43,62,80,1) 80%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,0.54) 0%, rgba(43,62,80,1) 80%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.54) 0%, rgba(43,62,80,1) 80%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#2b3e50', GradientType=0 );
+}
+
+.genre-labels label {
+    margin: 2px;
+}
+
+.download-options .btn-group {
+    margin: 2px;
+}
+
+.browse-movie-bottom .movie-year {
+    display: block;
+    padding: 0px 0px 0px 10px;
+}
+
+.browse-movie-bottom .movie-title {
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px 0px 0px 10px;
+    font-weight: bold;
+    display: block;
+}
+
+.browse-movie-formats {
+    padding: 10px;
+}
+
+.browse-movie-formats label {
+    margin: 2px;
+    cursor: pointer;
+}
+
 /* Bootswatch Fixes */
 
 .dropdown-menu {

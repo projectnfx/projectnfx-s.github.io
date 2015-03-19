@@ -15,15 +15,51 @@
             restrict: "E",
             transclude: true,
             replace: true,
+            scope: {
+                paginate: '='
+            },
             templateUrl: './ng-app/partials/pagination.html',
             controller: PaginationController,
-            controllerAs: 'paginationCtrl'
+            controllerAs: 'paginationCtrl',
+            link: function (scope, elem, attr, ctrl) {
+
+                scope.setPage = function (page) {
+                    scope.paginate.page_number = page;
+                    $rootScope.$emit('update-page', page);
+                };
+
+                scope.prevPage = function () {
+                    if (scope.paginate.page_number !== 1) {
+                        $rootScope.$emit('update-page', Math.min(1, scope.paginate.page_number - 1));
+                    }
+                };
+
+                scope.nextPage = function () {
+                    if (scope.paginate.page_number !== ctrl.getTotalPages()) {
+                        $rootScope.$emit('update-page', Math.min(scope.paginate.page_number + 1, ctrl.getTotalPages()));
+                    }
+                };
+
+            }
         };
 
-        function PaginationController($scope, $filter) {
+        function PaginationController($rootScope, $scope, $filter) {
 
             var vm = this;
 
+            vm.getTimes = function () {
+                var length = Math.min(21, Math.max(1, vm.getTotalPages()));
+                return new Array(length > 0 ? length : 1);
+            };
+
+            vm.pageFactor = function () {
+                return Math.max(1, Math.min(vm.getTotalPages(), $scope.paginate.page_number - 10));
+            };
+
+            vm.getTotalPages = function () {
+                var totalPages = Math.ceil(($scope.paginate.movie_count / $scope.paginate.limit));
+                return totalPages > 0 ? totalPages : 21;
+            };
         }
 
         return directive;
@@ -39,10 +75,7 @@
             },
             templateUrl: './ng-app/partials/search-box.html',
             controller: SearchController,
-            controllerAs: 'searchCtrl',
-            link: function (scope, elem, attrs) {
-                console.log(scope.collapsible);
-            }
+            controllerAs: 'searchCtrl'
         };
 
         function SearchController($scope, $filter) {
@@ -83,9 +116,11 @@
 
             var vm = this;
 
-            vm.crumbs = [
-                {path: '/home', title: 'home'}
-            ];
+            vm.crumbs = [];
+
+            $scope.$on('set-crumb', function (event, crumbs) {
+                vm.crumbs = crumbs;
+            });
 
             $scope.$on('add-crumb', function (event, newCrumb) {
                 for (var crumb in vm.crumbs) {
@@ -120,8 +155,14 @@
             controllerAs: 'navbarCtrl'
         };
 
-        function NavBarController() {
+        function NavBarController($location) {
             var vm = this;
+
+            vm.searchTerm = "";
+
+            vm.doSearch = function () {
+                $location.path('/list').search({query_term: vm.searchTerm});
+            };
 
             $translate.use('en-us');
 
