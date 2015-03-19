@@ -10,6 +10,7 @@ require.config({
         // Third party
         'jquery': 'vendors/jquery/jquery.min',
         'bootstrap': 'vendors/bootstrap/dist/js/bootstrap.min',
+        'cbox': 'vendors/jquery-colorbox/jquery.colorbox-min',
         // App
         'yify-app': 'ng-app/yifyApp',
         'yify-directives': 'ng-app/yifyDirectives',
@@ -24,8 +25,11 @@ require.config({
         'jquery': {
             deps: ['angular']
         },
-        'bootstrap': {
+        'cbox': {
             deps: ['jquery']
+        },
+        'bootstrap': {
+            deps: ['cbox']
         },
         'angular-route': {
             deps: ['angular']

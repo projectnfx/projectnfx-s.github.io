@@ -20,6 +20,13 @@
 
         vm.movie = {};
 
+        vm.getYtUrl = function (yt_code) {
+            return "//www.youtube.com/embed/" + yt_code + "?rel=0&amp;wmode=transparent&amp;border=0&amp;autoplay=1&amp;iv_load_policy=3"
+        };
+
+        // Enable details jquery scripts
+        $('.cbox').colorbox();
+
         vm.query = {
             movie_id: $routeParams.id,
             with_images: true,

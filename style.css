@@ -24,6 +24,25 @@ html, body {
     margin: 2px;
 }
 
+.youtube .fa-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+    color: white;
+}
+
+.cbox {
+    display: block;
+    background: black;
+}
+
+.cbox:hover img {
+    opacity: .5;
+}
+
 .download-options .btn-group {
     margin: 2px;
 }

@@ -19,6 +19,25 @@
                         <label class="label label-primary" ng-repeat="genre in detailCtrl.movie.genres">{{genre}}</label>
                     </div>
                     <hr>
+                    <div class="row">
+                        <div class="col-lg-4 youtube">
+                            <a class="cbox" href="{{detailCtrl.getYtUrl(detailCtrl.movie.yt_trailer_code)}}">
+                                <i class="fa fa-play"></i>
+                                <img ng-src="{{detailCtrl.movie.images.medium_screenshot_image1}}" class="img-responsive"/>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a class="cbox" href="{{detailCtrl.movie.images.large_screenshot_image2}}">
+                                <img ng-src="{{detailCtrl.movie.images.medium_screenshot_image2}}" class="img-responsive"/>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a class="cbox" href="{{detailCtrl.movie.images.large_screenshot_image3}}">
+                                <img ng-src="{{detailCtrl.movie.images.medium_screenshot_image3}}" class="img-responsive"/>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
                     <h4>
                         {{detailCtrl.movie.description_full}}
                     </h4>
