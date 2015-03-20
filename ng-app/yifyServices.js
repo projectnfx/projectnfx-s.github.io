@@ -12,6 +12,7 @@
     yifyService.$inject = ['$resource'];
     function yifyService($resource) {
 
+        // Temporary fix. Should test all three and use only the available
         var endPoints = [
             'https://yts.re/api/',
             'https://yts.pm/api/',
