@@ -158,6 +158,10 @@
         function NavBarController($location) {
             var vm = this;
 
+            vm.goHomeYoureDrunk = function () {
+                $location.path('/home');
+            };
+
             vm.searchTerm = "";
 
             vm.doSearch = function () {
