@@ -19,7 +19,7 @@
             'https://yts.io/api/'
         ];
 
-        var currentEndPoint = 1;
+        var currentEndPoint = 2;
 
         return {
             List: $resource(endPoints[currentEndPoint] + 'v2/list_movies.json', {}, {}),
