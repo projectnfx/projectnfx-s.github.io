@@ -88,7 +88,7 @@
                 quality: ['720p', '1080p', '3D'],
                 genre: ["all", "action", "adventure", "animation", "biography", "comedy", "crime", "documentary", "drama", "family", "fantasy", "filmnoir", "history", "horror", "music", "musical", "mystery", "news", "romance", "scifi", "short", "sport", "thriller", "war", "western", "all", "action", "adventure", "animation", "biography", "comedy", "crime", "documentary", "drama", "family", "fantasy", "filmnoir", "history", "horror", "music", "musical", "mystery", "news", "romance", "scifi", "short", "sport", "thriller", "war", "western"],
                 rating: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-                sort: ["latest", "oldest", "seeds", "peers", "year", "rating", "likes", "alphabetical", "downloads", "latest", "oldest", "seeds", "peers", "year", "rating", "likes", "alphabetical", "downloads"],
+                sort: ["latest", "oldest", "seeds", "peers", "year", "rating", "likes", "downloads", "latest", "oldest", "seeds", "peers", "year", "rating", "likes", "title", "downloads"],
                 order: ["asc", "desc"]
             };
 
