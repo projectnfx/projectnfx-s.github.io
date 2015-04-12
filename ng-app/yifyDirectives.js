@@ -30,13 +30,15 @@
 
                 scope.prevPage = function () {
                     if (scope.paginate.page_number !== 1) {
-                        $rootScope.$emit('update-page', Math.min(1, scope.paginate.page_number - 1));
+                        scope.paginate.page_number = Math.max(1, scope.paginate.page_number - 1);
+                        $rootScope.$emit('update-page', scope.paginate.page_number);
                     }
                 };
 
                 scope.nextPage = function () {
                     if (scope.paginate.page_number !== ctrl.getTotalPages()) {
-                        $rootScope.$emit('update-page', Math.min(scope.paginate.page_number + 1, ctrl.getTotalPages()));
+                        scope.paginate.page_number = Math.min(scope.paginate.page_number + 1, ctrl.getTotalPages());
+                        $rootScope.$emit('update-page', scope.paginate.page_number);
                     }
                 };
 
@@ -48,12 +50,13 @@
             var vm = this;
 
             vm.getTimes = function () {
-                var length = Math.min(21, Math.max(1, vm.getTotalPages()));
+                var length = Math.min(16, Math.max(1, vm.getTotalPages()));
                 return new Array(length > 0 ? length : 1);
             };
 
             vm.pageFactor = function () {
-                return Math.max(1, Math.min(vm.getTotalPages(), $scope.paginate.page_number - 10));
+                var pageFactor = Math.max(1, Math.min((vm.getTotalPages() - 15), $scope.paginate.page_number - 7));
+                return pageFactor;
             };
 
             vm.getTotalPages = function () {
