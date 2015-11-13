@@ -14,12 +14,13 @@
 
         // Temporary fix. Should test all three and use only the available
         var endPoints = [
+            'https://yts.ag/api/',
             'https://yts.re/api/',
             'https://yts.pm/api/',
             'https://yts.io/api/'
         ];
 
-        var currentEndPoint = 2;
+        var currentEndPoint = 0;
 
         return {
             List: $resource(endPoints[currentEndPoint] + 'v2/list_movies.json', {}, {}),
