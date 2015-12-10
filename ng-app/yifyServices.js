@@ -12,6 +12,8 @@
     yifyService.$inject = ['$resource'];
     function yifyService($resource) {
 
+        var crossOriginProxy = 'https://crossorigin.me/';
+
         // Temporary fix. Should test all three and use only the available
         var endPoints = [
             'https://yts.ag/api/',
@@ -23,9 +25,9 @@
         var currentEndPoint = 0;
 
         return {
-            List: $resource(endPoints[currentEndPoint] + 'v2/list_movies.json', {}, {}),
-            Detail: $resource(endPoints[currentEndPoint] + 'v2/movie_details.json', {}, {}),
-            Upcoming: $resource(endPoints[currentEndPoint] + 'v2/list_upcoming.json', {}, {})
+            List: $resource(crossOriginProxy + endPoints[currentEndPoint] + 'v2/list_movies.json', {}, {}),
+            Detail: $resource(crossOriginProxy + endPoints[currentEndPoint] + 'v2/movie_details.json', {}, {}),
+            Upcoming: $resource(crossOriginProxy + endPoints[currentEndPoint] + 'v2/list_upcoming.json', {}, {})
         };
     }
 
