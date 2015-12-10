@@ -1,5 +1,5 @@
 <div class="col-lg-12">
-    <div class="panel panel-default" style="background-image: url('{{detailCtrl.movie.images.background_image}}')">
+    <div class="panel panel-default" style="background-image: url('{{detailCtrl.movie.background_image}}')">
         <div class="panel-heading">{{ 'movie_detail' | translate }}</div>
         <div class="panel-body movie-details">
             <div class="row">
@@ -21,19 +21,19 @@
                     <hr>
                     <div class="row">
                         <div class="col-lg-4 youtube">
-                            <a class="cbox" rel="gal" href="{{detailCtrl.getYtUrl(detailCtrl.movie.yt_trailer_code)}}">
+                            <a class="cbox" rel="gal" href="{{detailCtrl.getYtUrl(detailCtrl.yt_trailer_code)}}">
                                 <i class="fa fa-play"></i>
-                                <img ng-src="{{detailCtrl.movie.images.medium_screenshot_image1}}" class="img-responsive"/>
+                                <img ng-src="{{detailCtrl.movie.medium_screenshot_image1}}" class="img-responsive"/>
                             </a>
                         </div>
                         <div class="col-lg-4">
                             <a class="cbox" rel="gal" href="{{detailCtrl.movie.images.large_screenshot_image2}}">
-                                <img ng-src="{{detailCtrl.movie.images.medium_screenshot_image2}}" class="img-responsive"/>
+                                <img ng-src="{{detailCtrl.movie.medium_screenshot_image2}}" class="img-responsive"/>
                             </a>
                         </div>
                         <div class="col-lg-4">
                             <a class="cbox" rel="gal" href="{{detailCtrl.movie.images.large_screenshot_image3}}">
-                                <img ng-src="{{detailCtrl.movie.images.medium_screenshot_image3}}" class="img-responsive"/>
+                                <img ng-src="{{detailCtrl.movie.medium_screenshot_image3}}" class="img-responsive"/>
                             </a>
                         </div>
                     </div>
@@ -54,9 +54,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="actor in detailCtrl.movie.actors">
+                            <tr ng-repeat="actor in detailCtrl.movie.cast">
                                 <td>
-                                    <img ng-src="{{actor.small_image}}" class="img-responsive img-circle" width="50"/> 
+                                    <img ng-src="{{actor.url_small_image}}" class="img-responsive img-circle" width="50"/>
                                 </td>
                                 <td>
                                     <h4><a href="javascript:void(0)" ng-click="detailCtrl.searchByName(actor.name)">{{actor.name}}</a></h4>
@@ -67,30 +67,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <hr>
-                    <h4>{{ 'directors' | translate }}</h4>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="director in detailCtrl.movie.directors">
-                                <td>
-                                    <img ng-src="{{director.small_image}}" class="img-responsive img-circle" width="50"/> 
-                                </td>
-                                <td>
-                                    <h4><a href="javascript:void(0)" ng-click="detailCtrl.searchByName(director.name)">{{director.name}}</a></h4>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
                 <div class="col-lg-6">
-                    <img ng-src="{{detailCtrl.movie.images.large_cover_image}}" class="img-responsive img-centered"/>
+                    <img ng-src="{{detailCtrl.movie.large_cover_image}}" class="img-responsive img-centered"/>
                 </div>
             </div>
         </div>

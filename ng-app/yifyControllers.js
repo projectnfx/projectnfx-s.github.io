@@ -40,7 +40,7 @@
         };
 
         yifyService.Detail.get(vm.query).$promise.then(function (response) {
-            vm.movie = response.data;
+            vm.movie = response.data.movie;
             $scope.$emit('set-crumb', [{path: '/home', title: 'home'}, {path: '/list', title: 'search_results'}, {path: '/details/' + vm.query.movie_id, title: vm.movie.title}]);
         });
 
